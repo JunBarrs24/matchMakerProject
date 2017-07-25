@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+  <title>demo6</title>
+
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="../../font-roboto/roboto.html">
+  <link rel="import" href="bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="bower_components/paper-item/paper-icon-item.html">
+  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+  <link rel="import" href="bower_components/app-layout/app-drawer/app-drawer.html">
+  <link rel="import" href="bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+  <link rel="import" href="bower_components/app-layout/app-header/app-header.html">
+  <link rel="import" href="bower_components/app-layout/app-header-layout/app-header-layout.html">
+  <link rel="import" href="bower_components/app-layout/app-toolbar/app-toolbar.html">
+
+  <custom-style>
+    <style is="custom-style">
+    body {
+      margin: 0;
+      font-family: 'Roboto', 'Noto', sans-serif;
+      background-color: #eee;
+    }
+    #startDrawer {
+      --app-drawer-content-container: {
+        box-shadow: 1px 0 2px 1px rgba(0,0,0,0.18);
+      }
+    }
+    
+    app-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #4285f4;
+      color: #fff;
+    }
+    app-header paper-icon-button {
+      --paper-icon-button-ink-color: white;
+    }
+    
+     .avatar-container {
+      position: relative;
+      border: 2px solid #00AA8D;
+      border-radius: 50%;
+      height: 90px;
+      padding: 2px;
+      width: 90px;
+      margin: 20px auto;
+    }
+
+    .avatar-container img {
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+    }
+
+    .contact-info {
+      margin: 0 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #CCC;
+      text-align: center;
+    }
+
+    .contact-info .name {
+      font-weight: bold;
+    }
+
+    .contact-info .email {
+      color: #999;
+    }
+    
+    .divider {
+      height: 1px;
+      width: 100%;
+      background-color: #CCC;
+    }
+    
+    .categoriaTitulo {
+      text-align: center;
+    }
+    </style>
+  </custom-style>
+
+</head>
+<body unresolved>
+
+  <app-header-layout>
+    <app-header fixed slot="header">
+      <app-toolbar>
+         <paper-icon-button icon="menu" onclick="startDrawer.toggle()"></paper-icon-button>
+        <div main-title>Inbox</div>
+      </app-toolbar>
+    </app-header>
+  </app-header-layout>
+  
+  <app-drawer id="startDrawer" align="start">
+    <div class="drawer-content">
+      <div class="avatar-container">
+              <img src="{{user.avatar}}" alt=avatar">
+            </div>
+            <div class="contact-info">
+              <div class="name">{{user.nombre}}</div>
+              <div class="email">{{user.correo}}</div>
+            </div>
+      <paper-icon-item>
+        <iron-icon icon="inbox" slot="item-icon"></iron-icon> <span>Inbox</span>
+      </paper-icon-item>
+      <paper-icon-item>
+            <iron-icon icon="query-builder" slot="item-icon"></iron-icon> <span>Snoozed</span>
+          </paper-icon-item>
+          <paper-icon-item>
+            <iron-icon icon="done" slot="item-icon"></iron-icon> <span>Done</span>
+          </paper-icon-item>
+          <paper-icon-item>
+            <iron-icon icon="drafts" slot="item-icon"></iron-icon> <span>Drafts</span>
+          </paper-icon-item>
+          <paper-icon-item>
+            <iron-icon icon="send" slot="item-icon"></iron-icon> <span>Sent</span>
+          </paper-icon-item>
+          <paper-icon-item>
+            <iron-icon icon="delete" slot="item-icon"></iron-icon> <span>Trash</span>
+          </paper-icon-item>
+          <paper-icon-item>
+    <div class="avatar blue" slot="item-icon"></div>
+    <paper-item-body two-line>
+      <div>Photos</div>
+      <div secondary>Jan 9, 2014</div>
+    </paper-item-body>
+    <paper-menu-button>
+  <paper-icon-button icon="menu" slot="dropdown-trigger"></paper-icon-button>
+  <paper-listbox slot="dropdown-content">
+    <paper-item>Share</paper-item>
+    <paper-item>Settings</paper-item>
+    <paper-item>Help</paper-item>
+  </paper-listbox>
+</paper-menu-button>
+  </paper-icon-item>
+          
+         
+        </div>
+      </app-drawer>
+
+
+</body>
+</html>

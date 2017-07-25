@@ -1,0 +1,139 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/font-roboto/roboto.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+
+<link rel="import" href="../bower_components/app-route/app-route.html">
+
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+
+<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+<dom-module id="drawer-matchmaker">
+  <template>
+    <style>
+     :host {
+        --test-para-no-olvidarlo: 'jaja';
+      }
+      #startDrawer {
+        --app-drawer-content-container: {
+          box-shadow: 1px 0 2px 1px rgba(0,0,0,0.18);
+        }
+      }
+      .avatar-container {
+      position: relative;
+      border: 2px solid #00AA8D;
+      border-radius: 50%;
+      height: 90px;
+      padding: 2px;
+      width: 90px;
+      margin: 20px auto;
+    }
+
+    .avatar-container img {
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+    }
+
+    .contact-info {
+      margin: 0 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #CCC;
+      text-align: center;
+    }
+
+    .contact-info .name {
+      font-weight: bold;
+    }
+
+    .contact-info .email {
+      color: #999;
+    }
+    
+    .divider {
+      height: 1px;
+      width: 100%;
+      background-color: #CCC;
+    }
+    
+    .categoriaTitulo {
+      cursor: pointer;
+      text-align: center;
+    }
+    
+    paper-item {
+      display: none;
+      height: 54px;
+    }
+
+    paper-item > a {
+      width: 100%;
+      height: 100%;
+      line-height: 54px;
+      text-align: center;
+      text-decoration: none;
+      color: black;
+    }
+
+    paper-icon-button {
+      --paper-icon-button-ink-color: white;
+    }
+    </style>
+
+        
+    <app-drawer id="startDrawer" align="start" slot="drawer">
+      <app-header-layout has-scrolling-region>
+
+          <app-header fixed slot="header">
+            <div class="avatar-container">
+              <img src="{{activeuser.avatar}}" alt=avatar">
+            </div>
+            <div class="contact-info">
+              <div class="name">{{activeuser.nombre}}</div>
+              <div class="email">{{activeuser.correo}}</div>
+            </div>
+          </app-header>
+       <!-- nav menu -->
+
+<!--       
+          <paper-listbox
+              selected="[[_pageData.page]]"
+              attr-for-selected="name"
+              on-iron-activate="_drawerSelected">
+   -->
+           <paper-listbox>
+			<template is="dom-repeat" items="{{menuoptions}}" as="menuItem">
+			  <template is="dom-if" if="{{menuItem.primeroDeSuCategoria}}">
+                <h3 class="categoriaTitulo" on-tap="_toggleMenuOption" data-item$="[[menuItem.categoria]]">
+                  {{menuItem.categoria}}
+                </h3>
+                <div class="divider"></div>
+              </template>
+              <paper-item id="{{menuItem.name}}" name="{{menuItem.name}}">
+                <a href="{{menuItem.url}}">{{menuItem.texto}}</a>
+              </paper-item>
+              <template is="dom-if" if="{{menuItem.ultimoDeSuCategoria}}">
+                <div class="divider"></div>
+              </template>
+            </template>
+          </paper-listbox>
+
+        </app-header-layout>
+    </app-drawer>
+  </template>
+  <script src="drawer-matchmaker.js"></script>
+</dom-module>

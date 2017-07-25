@@ -1,0 +1,58 @@
+ [ 
+   {
+     "name": "Juanito bananas", 
+     "url": "#/home", 
+     "texto": "Home", 
+     "categoria": "Candidatos", 
+     "primeroDeSuCategoria": true, 
+     "ultimoDeSuCategoria": false
+   },
+   {
+     "name": "candPotenciales", 
+     "url": "#/favorites", 
+     "texto": "Potenciales", 
+     "categoria": "Candidatos", 
+     "primeroDeSuCategoria": false, 
+     "ultimoDeSuCategoria": false
+   },
+   {
+     "name": "candAgendados", 
+     "url": "#/saved", 
+     "texto": "Agendados", 
+     "categoria": "Candidatos", 
+     "primeroDeSuCategoria": false, 
+     "ultimoDeSuCategoria": false
+   },
+   {
+     "name": "candOtros", 
+     "url": "#/trending", 
+     "texto": "Agendados", 
+     "categoria": "Los Gallos", 
+     "primeroDeSuCategoria": false, 
+     "ultimoDeSuCategoria": true
+   },
+   {
+     "name": "sociosPotenciales", 
+     "url": "#/trending", 
+     "texto": "sociosAgendados", 
+     "categoria": "Socios", 
+     "primeroDeSuCategoria": true, 
+     "ultimoDeSuCategoria": false
+   },
+   {
+     "name": "sociosAgendados", 
+     "url": "#/trending", 
+     "texto": "Agendados", 
+     "categoria": "Socios", 
+     "primeroDeSuCategoria": false, 
+     "ultimoDeSuCategoria": false
+   },
+   {
+     "name": "sociosOtros", 
+     "url": "#/trending", 
+     "texto": "Los Gallos", 
+     "categoria": "Socios", 
+     "primeroDeSuCategoria": false, 
+     "ultimoDeSuCategoria": true
+   }
+]

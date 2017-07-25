@@ -1,0 +1,272 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+
+<link rel="import" href="recipe-detail.html">
+<link rel="import" href="recipe-list.html">
+<link rel="import" href="app-icons.html">
+
+<dom-module id="matchmaker-app">
+
+  <template>
+
+    <style>
+    :host {
+      --paper-font-common-base: {
+        font-family: Raleway, sans-serif;
+      };
+    }
+
+    app-drawer-layout:not([narrow]) [drawer-toggle] {
+      display: none;
+    }
+
+    .avatar-container {
+      position: relative;
+      border: 2px solid #00AA8D;
+      border-radius: 50%;
+      height: 90px;
+      padding: 2px;
+      width: 90px;
+      margin: 20px auto;
+    }
+
+    .avatar-container img {
+      border-radius: 50%;
+      height: 100%;
+      width: 100%;
+    }
+
+    .contact-info {
+      margin: 0 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #CCC;
+      text-align: center;
+    }
+
+    .contact-info .name {
+      font-weight: bold;
+    }
+
+    .contact-info .email {
+      color: #999;
+    }
+    
+    .divider {
+      height: 1px;
+      width: 100%;
+      background-color: #CCC;
+    }
+    
+    .categoriaTitulo {
+      text-align: center;
+    }
+
+    paper-item {
+      height: 54px;
+    }
+
+    paper-item > a {
+      width: 100%;
+      height: 100%;
+      line-height: 54px;
+      text-align: center;
+      text-decoration: none;
+      color: black;
+    }
+
+    paper-icon-button {
+      --paper-icon-button-ink-color: white;
+    }
+    </style>
+
+    <app-location route="{{_route}}" use-hash-as-path></app-location>
+    <app-route
+        route="{{_route}}"
+        pattern="/:page"
+        data="{{_pageData}}"
+        tail="{{_subRoute}}"></app-route>
+    <app-route
+        route="{{_subRoute}}"
+        pattern="/:id"
+        data="{{_idData}}"></app-route>
+
+    <app-drawer-layout responsive-width="1280px">
+
+      <!-- nav panel -->
+      <app-drawer id="drawer" swipe-open slot="drawer">
+        <app-header-layout has-scrolling-region>
+
+          <app-header fixed slot="header">
+            <div class="avatar-container">
+              <img src="{{user.avatar}}" alt=avatar">
+            </div>
+            <div class="contact-info">
+              <div class="name">{{user.nombre}}</div>
+              <div class="email">{{user.correo}}</div>
+            </div>
+          </app-header>
+
+          <!-- nav menu -->
+          <paper-listbox
+              selected="[[_pageData.page]]"
+              attr-for-selected="name"
+              on-iron-activate="_drawerSelected">
+            
+			<template is="dom-repeat" items="{{test}}" as="menuItem">
+			  <template is="dom-if" if="{{menuItem.primeroDeSuCategoria}}">
+                <h3 class="categoriaTitulo">{{menuItem.categoria}}</h3>
+                <div class="divider"></div>
+              </template>
+              <paper-item name="{{menuItem.name}}">
+                <a href="{{menuItem.url}}" name="name">{{menuItem.texto}}</a>
+              </paper-item>
+              <template is="dom-if" if="{{menuItem.ultimoDeSuCategoria}}">
+                <div class="divider"></div>
+              </template>
+            </template>
+ 
+          </paper-listbox>
+        </app-header-layout>
+      </app-drawer>
+
+      <!-- list/detail pages -->
+      <iron-pages selected="[[_selectedPage]]" attr-for-selected="name">
+
+        <recipe-list name="home" recipes="[[recipes]]">
+          <paper-icon-button icon="app:menu" drawer-toggle slot="drawer-toggle"></paper-icon-button>
+        </recipe-list>
+
+        <recipe-list name="favorites">
+          <paper-icon-button icon="app:menu" drawer-toggle slot="drawer-toggle"></paper-icon-button>
+        </recipe-list>
+
+        <recipe-list name="saved">
+          <paper-icon-button icon="app:menu" drawer-toggle slot="drawer-toggle"></paper-icon-button>
+        </recipe-list>
+
+        <recipe-list name="trending">
+          <paper-icon-button icon="app:menu" drawer-toggle slot="drawer-toggle"></paper-icon-button>
+        </recipe-list>
+
+        <recipe-detail
+            id="detailView"
+            name="detail"
+            recipe="[[_getRecipe(recipes, _idData.id)]]"></recipe-detail>
+
+      </iron-pages>
+
+    </app-drawer-layout>
+
+  </template>
+
+  <script>
+
+  Polymer({
+
+    is: 'matchmaker-app',
+
+    properties: {
+
+      recipes: Object,
+
+      _route: Object,
+
+      _subRoute: Object,
+
+      _pageData: {
+        type: Object,
+        observer: '_pageDataChanged'
+      },
+
+      _selectedPage: String,
+
+      _idData: Object,
+    
+      _scrollPositionMap: {
+        type: Object,
+        value: function() {
+          return {};
+        }
+      }
+    },
+
+    attached: function() {
+      this.async(function() {
+        if (!this._route.path) {
+          this.set('_route.path', '/home');
+        }
+      });
+    },
+
+    _getRecipe: function() {
+      if (this.recipes && this._idData && this._idData.id) {
+        for (var i = 0; i < this.recipes.length; ++i) {
+          var r = this.recipes[i];
+          if (r.id === this._idData.id) {
+            return r;
+          }
+        }
+      }
+      return null;
+    },
+
+    _drawerSelected: function() {
+      if (!this.$.drawer.persistent) this.$.drawer.close();
+    },
+
+    /**
+     * Preserves the document scroll position, so 
+     * it can be restored when returning to a page.
+     */
+    _pageDataChanged: function(pageData, oldPageData) {
+      var map = this._scrollPositionMap;
+     
+      if (oldPageData != null && oldPageData.page != null) {
+        map[oldPageData.page] = window.pageYOffset;
+      }
+      this._selectedPage = pageData.page;
+      if (map[pageData.page] != null) {
+        Polymer.AppLayout.scroll({ top: map[pageData.page], behavior: 'silent' });
+      } else if (this.isAttached) {
+        Polymer.AppLayout.scroll({ top: 0, behavior: 'silent' });
+      }
+    },
+    
+    ready: function() {
+      console.log(menuOptions);
+      console.log("Que pedooo cachorros");
+      this.test = [
+        {name: "home", url: "#/home", texto: "Home", categoria: "Candidatos", primeroDeSuCategoria: true, ultimoDeSuCategoria: false},
+        {name: "candPotenciales", url: "#/favorites", texto: "Potenciales", categoria: "Candidatos", primeroDeSuCategoria: false, ultimoDeSuCategoria: false},
+        {name: "candAgendados", url: "#/saved", texto: "Agendados", categoria: "Candidatos", primeroDeSuCategoria: false, ultimoDeSuCategoria: false},
+        {name: "candOtros", url: "#/trending", texto: "Los Gallos", categoria: "Candidatos", primeroDeSuCategoria: false, ultimoDeSuCategoria: true},
+        {name: "sociosPotenciales", url: "#/favorites", texto: "Potenciales", categoria: "Socios", primeroDeSuCategoria: true, ultimoDeSuCategoria: false},
+        {name: "sociosAgendados", url: "#/saved", texto: "Agendados", categoria: "Socios", primeroDeSuCategoria: false, ultimoDeSuCategoria: false},
+        {name: "sociosOtros", url: "#/trending", texto: "Los Gallos", categoria: "Socios", primeroDeSuCategoria: false, ultimoDeSuCategoria: true},
+      ];
+      this.user = {
+        nombre: "Usuario",
+        correo: "email@google.com",
+        avatar: "../images/girl.png"
+      };
+    }
+  });
+  </script>
+
+</dom-module>

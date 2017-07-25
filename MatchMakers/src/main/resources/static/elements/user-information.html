@@ -1,0 +1,140 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../bower_components/paper-menu-button/paper-menu-button.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="user-information">
+  <template>
+    <style>
+      .user-content {
+        width: 100%;
+        height: 520px;
+      }
+      
+      .photos-container {
+        width: 24%;
+        height: 475px;;
+        margin-top: 10px;
+        display: inline-block;
+        vertical-align: top;
+      }
+      
+      .user-tabs-information {
+        width: 75%;
+        height: 475px;
+        margin-top: 10px;
+        display: inline-block;
+        vertical-align: top;
+      }
+      
+      .image-user-container {
+        height: 250px;
+      }
+      
+      .image-user-container .slider .slides img {
+        height: 250px;
+        margin: auto;
+        border-radius: 2px;
+      }
+      
+      div.slider.style-scope.user-information {
+        height: 280px !important;
+      }
+      .image-user-basic-information {
+        height: 240px;
+        margin-top: 40px;
+      }
+      
+      .image-user-basic-information p {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .image-user-basic-information span {
+        font-weight: normal;
+      }
+      
+      .images-user-slides {
+        background-color: #eee !important;
+        height: 250px !important;
+      }
+      .user-form-content {
+        width: 100%;
+        height: 400px;
+      }
+      .acciones {
+        width: 100%;
+        height: 50px;
+      }
+    </style>
+    <div class="user-content">
+      <div class="photos-container">
+        <div class="image-user-container">
+          <div class="slider">
+            <ul class="slides images-user-slides">
+              <li>
+                <img src="../images/fotos/mujer.jpg"> 
+              </li>
+              <li>
+                <img src="../images/fotos/mujer1.jpg">
+              </li>
+              <li>
+                <img src="../images/fotos/mujer2.jpg">
+              </li>
+              <li>
+                <img src="../images/fotos/mujer3.jpg">
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="image-user-basic-information">
+          <p> Nombre: <span> Juanita Barrera Valdés </span> </p>
+          <p> Edad: <span> 26 años </span> </p> 
+          <p> Profesión: <span> Prostituta de tiempo completo </span> </p> 
+        </div>
+      </div>
+      <div class="user-tabs-information">
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs">
+              <li class="tab col s3"><a class="active" href="#idNumberBasica">Básica</a></li>
+              <li class="tab col s3"><a href="#idNumberProfesional">Profesional</a></li>
+              <li class="tab col s3"><a href="#idNumberGustos">Gustos</a></li>
+              <li class="tab col s3"><a href="#idNumberNoCuestionable">No cuestionable</a></li>
+            </ul>
+          </div>
+          <div id="idNumberBasica" class="col s12 user-form-content">
+            Test 1
+          </div>
+          <div id="idNumberProfesional" class="col s12 user-form-content">
+            Test 2
+          </div>
+          <div id="idNumberGustos" class="col s12 user-form-content">
+            Test 3
+          </div>
+          <div id="idNumberNoCuestionable" class="col s12 user-form-content">
+            Test 4
+          </div>
+       </div>
+     </div>
+    </div>
+         
+     <div class="acciones">
+       <a class="waves-effect waves-teal btn-flat">Match</a>
+       <a class="waves-effect waves-teal btn-flat">Enviar a No deseable</a>
+       <a class="waves-effect waves-teal btn-flat">Foto no válida</a>
+       <a class="waves-effect waves-teal btn-flat">Hacer que pague</a>
+     </div>
+    	
+  </template>
+</dom-module>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="user-information.js"></script>
