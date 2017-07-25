@@ -3,9 +3,7 @@ target/
 
 ### STS ###
 .apt_generated
-.classpath
 .factorypath
-.project
 .settings
 .springBeans
 
@@ -22,3 +20,4 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+/bin
