@@ -1,0 +1,75 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/font-roboto/roboto.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
+
+<script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<dom-module id="search-results">
+  <template>
+    <style>
+      .resultsSection {
+        padding: 30px;
+      }
+
+       h2 {
+        font-size: 24px;
+        font-weight: 300;
+        -webkit-font-smoothing: antialiased;
+      }
+      
+      .search-query {
+        font-size: 24px;
+        color: #1e87ea !important;
+      }
+      
+      .search-filter {
+        padding: 0 10px;
+        display: inline-block;
+        cursor: pointer;
+        color: #1e88e5;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      
+      .search-filter.active {
+        color: #f50057;
+      }
+      
+      .filter-container {
+        font-size: 16px;
+      }
+      
+    </style>
+    <section class="resultsSection">
+      <h2>Resultados por <span class="search-query">pepe pecas</span></h2>
+      <div class="filter-container">
+        Filtrar por:
+        <a class="search-filter" data-label="personas" href="#">Personas</a>|
+        <a class="search-filter" data-label="lugares" href="#">Lugares</a>|
+        <a class="search-filter" data-label="matchmakers" href="#">MatchMakers</a>|
+        <a class="search-filter active" data-label="all" href="#">Todos</a>
+     </div>
+     
+     <ul class="collapsible popout" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+      <li>
+        <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+    </ul>
+
+    </section>
+  </template>
+</dom-module>
+
+<script src="search-results.js"></script>

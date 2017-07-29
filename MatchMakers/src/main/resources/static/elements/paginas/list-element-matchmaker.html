@@ -1,0 +1,267 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../../bower_components/paper-menu-button/paper-menu-button.html">
+<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<link rel="import" href="../componentes/user-information.html">
+
+<dom-module id="list-element-matchmaker">
+  <template>
+    <style>
+.list-header {
+	height: 100px;
+	background-color: white;
+	margin: 0 auto -5px auto;
+	width: 98%;
+	transition: box-shadow .25s;
+	border-radius: 2px;
+	padding-top: 5px;
+}
+
+.list-container {
+	height: auto;
+}
+
+.search-user-container {
+  position: relative;
+  display:inline-block;
+  height: 50px;
+}
+.title-list {
+  color: #01579b;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.filtro {
+  font-weight: bold;
+}
+
+.chip:hover {
+  opacity: .8;
+  background-color: #26a69a;
+  color: #fff;
+}
+.filtros-text {
+  font-size: 18px;
+  font-weight: bold;
+}
+.user-info {
+  background-color: white;
+}
+
+.sort-div {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.linea-tonta {
+  height: 1px;
+  background-color:  rgba(0,0,0,.15);
+  margin-top: 7px;
+  margin-right: 25%;
+  width: 50%;
+}
+
+.texto-ordenar {
+  color: rgba(0,0,0,.55);
+  line-height: 16px;
+  cursor: pointer;
+  font-size: 13px;
+}
+#opcion-ordenar {
+ cursor: pointer;
+ font-size: 13px;
+ font-weight: bold;
+}
+.avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  box-sizing: border-box;
+  background-color: #DDD;
+}
+.name-cliente {
+  font-size: 16px;
+  font-weight: bold;
+  vertical-align:middle;
+}
+.edad-cliente {
+ color: rgba(0,0,0,.55);
+}
+.busca-cliente {
+ color: rgba(0,0,0,.55);
+}
+.avatar-container {
+ display: inline-block;
+ width: 60px;
+ height: 55px;
+ vertical-align: top;
+ margin-top: 5px;
+}
+
+.information-user-container{
+ display: inline-block;
+ width: auto;
+ height: 55px;
+ vertical-align: top;
+ margin-top: 5px;
+}
+
+.clase-tonta{
+ color: red;
+}
+
+.button-actions-container {
+  color: gray;
+  float: right;
+  margin-top: -50px;
+  margin-right: 10px;
+  height: 30px;
+}
+
+.button-actions-container i {
+  font-size: 2.3rem;
+}
+
+.button-actions-container i:hover {
+  color: #0288d1;
+}
+
+</style>
+<div class=list-container>
+
+  <iron-ajax
+      auto 
+      id="menuRequest"
+      url="../../data/test-currentUser.json" 
+      handle-as="json"
+      on-response="handleListOfUsersResponse"></iron-ajax>
+
+  <!-- Filtros -->
+  <ul id="header-list" class="collapsible" data-collapsible="expandable">
+    <li>
+      <div class="collapsible-header">
+       <div class="title-section">
+         <i class="Medium material-icons">perm_identity</i>
+         <span class="title-list"> Lista de Clientes Potenciales </span>
+       </div>
+       <!-- Div que muestra los filtros seleccionados -->
+       <div class="filter-section">
+           <span class="filtros-text">{{filtrosText}}</span>
+         <template is="dom-repeat" items="{{filtros}}" as="filtro">
+           <div class="chip">
+           <span class="filtro"> {{filtro.nombre}} </span> 
+           <i class="close material-icons"
+              data-filtro="[[filtro]]" 
+              on-tap="clickOnIcon">close</i> 
+          </div>
+         </template> 
+       </div>
+     </div>
+     <!-- Div que muestra las opciones de filtro -->
+ 
+      <div class="collapsible-body">
+        <div class="input-field col s6">
+            <i class="material-icons prefix">search</i>
+            <input id="icon_telephone" type="tel" class="validate">
+            <label for="icon_telephone">Buscar por Nombre</label>
+          </div>
+          <span>Lorem ipsum dolor sit amet.</span>
+          <p class="range-field">
+            <input type="range" id="rangeEdad" min="18" max="80" />
+          </p>
+      </div>
+
+    </li>
+  </ul>
+  <!-- Finaliza Filtros -->
+  
+  <div class="sort-div">
+   <div class="linea-tonta"></div>
+   <span class="texto-ordenar dropdown-button" data-activates='filter-dropdown'>
+     Ordernar Por:
+     <span id="opcion-ordenar"> {{orderMode}} </span>
+   </span>
+   <ul id='filter-dropdown' class='dropdown-content'>
+      <template is="dom-repeat" items="{{orderOptions}}" as="option">
+        <li on-tap="_changeOrderMode" data-option="{{option}}"><a>{{option}}</a></li>
+        <li class="divider"></li>
+      </template>
+  </ul>
+  </div>
+
+  <ul class="collapsible popout" data-collapsible="expandable">
+    <template is="dom-repeat" items="userslist" as="user">
+      <li class="hoverable">
+        <div class="collapsible-header hoverable">
+          <div class="avatar-container">
+            <img class="avatar" src={{user.avatar}}>
+          </div>
+          <div class="information-user-container">
+            <span class="name-cliente"> {{user.nombre}} </span>
+            <span class="edad-cliente"> {{user.edad}} años </span>
+            <span class="busca-cliente"> {{user.interes}} </span>
+          </div>
+          <div class="information-user-container button-actions-container">
+             <a class="waves-effect waves-teal btn boton-accion">Acciones</a>
+          </div>
+        </div>
+  
+        <div class="collapsible-body user-info">
+          <user-information></user-information>
+        </div>
+      </li>
+    </template>
+    
+    <li class="hoverable">
+      <div class="collapsible-header hoverable">
+        <div class="avatar-container">
+          <img class="avatar" src="../../images/fotos/mujer.jpg">
+        </div>
+        <div class="information-user-container">
+          <span class="name-cliente"> Juanita Barrera Valdés </span>
+          <span class="edad-cliente"> 26 años </span>
+          <span class="busca-cliente"> Busca Hombres </span>
+        </div>
+        <ul id='acciones-usuarioJuanita' class='dropdown-content'>
+            <!--  <template is="dom-repeat" items="{{orderOptions}}" as="option"> -->
+              <li><a>Foto no deseada</a></li>
+              <li class="divider"></li>
+              <li><a>Match</a></li>
+              <li class="divider"></li>
+              <li><a>Mandar al fierro</a></li>
+              <li class="divider"></li>
+            <!-- </template> -->
+          </ul>
+      </div>
+      <div class="information-user-container button-actions-container">
+          <i class="material-icons waves-effect waves-teal tooltipped dropdown-button"
+             data-position="bottom"
+             data-delay="50"
+             data-tooltip="Acciones"
+             data-activates='acciones-usuarioJuanita'>
+           toc
+          </i>
+          
+        </div>
+      <div class="collapsible-body user-info">
+          <user-information></user-information>
+      </div>
+    </li>
+  </ul>
+</div>      
+  </template>
+</dom-module>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="list-element-matchmaker.js"></script>

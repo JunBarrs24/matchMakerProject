@@ -1,0 +1,88 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/font-roboto/roboto.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
+
+<script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+<dom-module id="header-matchmaker">
+
+  <template>
+    <style>    
+    .avatar {
+      height: 30px;
+      width: 30px;
+      border-radius: 20px;
+      box-sizing: border-box;
+      background-color: #DDD;
+      margin-right: 45px;
+    }
+    
+    .clickButton {
+      cursor: pointer;
+    }
+    
+    .first-title {
+      margin-left: 30px !important;
+    }
+    
+    .mainHeader [main-title] {
+      font-weight: 400;
+      margin: 0 0 0 50px;
+    }
+    .mainHeader [condensed-title] {
+      font-weight: 400;
+      margin-left: 30px;
+    }
+    .mainHeader [condensed-title] i {
+      font-style: normal;
+      font-weight: 100;
+    }
+    app-toolbar.tall {
+      height: 148px;
+    }
+        
+    .appTitle {
+      font-size: 24px;
+      font-weight: 300;
+    }
+    
+    .search-field-wrapper {
+      height: 65px;
+      display: inline-block;
+      position: relative;
+      width: 450px;
+    }
+    
+    .search-field-wrapper .search {
+      border-radius: 2px;
+      background-color: rgba(255, 255, 255, 0.26);
+      color: black;
+      font-size: 16px;
+      height: 30px;
+      margin-top: 17px;
+      padding-left: 7px;
+    }
+    
+    .search-field-wrapper .search:hover {
+     background-color: rgba(255, 255, 255, 1);
+    }
+    
+    </style>
+    <app-toolbar>
+      <paper-icon-button id="toggle" icon="menu" onclick="startDrawer.toggle()"></paper-icon-button>
+      <h4 condensed-title class="appTitle">Matchmakers </h4>
+      <div class="search-field-wrapper">
+         <input type="search" class="search hoverable" placeholder="Buscar...">
+      </div>
+      <paper-icon-button icon="event" id="header-calendar"></paper-icon-button>
+      <paper-icon-button icon="assignment" id="header-assigments"></paper-icon-button>
+      <paper-icon-button icon="more-vert"></paper-icon-button>
+      <img class="avatar clickButton" src="{{activeuser.avatar}}">
+    </app-toolbar>
+  </template>
+</dom-module>
+
+<script src="headerMatch.js"></script>

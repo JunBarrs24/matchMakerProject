@@ -1,5 +1,6 @@
 {
-  "nombre": "Usuario",
-  "correo": "email@google.com",
-  "avatar": "../images/girl.png"
+  "nombre": "Juan Barrera",
+  "correo": "barrera.yo@gmail.com",
+  "avatar": "../images/girl.png",
+  "role": "Administrador"
 }

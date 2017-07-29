@@ -1,3 +1,12 @@
 [
-
+  {
+    "nombre": "Juanita Barrera Valdés",
+    "edad": 26,
+    "interes": "Busca Hombres",
+    "correo": "barrera.yo@gmail.com",
+    "avatar": "../../../images/fotos/mujer.jpg",
+    "role": "Administrador"
+  },
+  {
+  }
 ]

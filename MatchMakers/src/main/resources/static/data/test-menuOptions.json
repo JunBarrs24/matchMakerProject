@@ -1,58 +1,47 @@
- [ 
+ [
    {
-     "name": "Juanito bananas", 
-     "url": "#/home", 
-     "texto": "Home", 
-     "categoria": "Candidatos", 
-     "primeroDeSuCategoria": true, 
-     "ultimoDeSuCategoria": false
+     "categoria": "Candidatos",
+     "icon": "face",
+     "url": "#",
+     "subCategorias": [{
+         "name": "candAgendados", 
+         "url": "/lista1", 
+         "texto": "Potenciales"
+       },{
+         "name": "candAgendados", 
+         "url": "/lista2", 
+         "texto": "Foto No valida"
+     }]
    },
    {
-     "name": "candPotenciales", 
-     "url": "#/favorites", 
-     "texto": "Potenciales", 
-     "categoria": "Candidatos", 
-     "primeroDeSuCategoria": false, 
-     "ultimoDeSuCategoria": false
-   },
-   {
-     "name": "candAgendados", 
-     "url": "#/saved", 
-     "texto": "Agendados", 
-     "categoria": "Candidatos", 
-     "primeroDeSuCategoria": false, 
-     "ultimoDeSuCategoria": false
-   },
-   {
-     "name": "candOtros", 
-     "url": "#/trending", 
-     "texto": "Agendados", 
-     "categoria": "Los Gallos", 
-     "primeroDeSuCategoria": false, 
-     "ultimoDeSuCategoria": true
-   },
-   {
-     "name": "sociosPotenciales", 
-     "url": "#/trending", 
-     "texto": "sociosAgendados", 
      "categoria": "Socios", 
-     "primeroDeSuCategoria": true, 
-     "ultimoDeSuCategoria": false
+     "icon": "face",
+     "url": "#",
+     "subCategorias": [{
+         "name": "candAgendados", 
+         "url": "/lista3", 
+         "texto": "Potenciales", 
+         "categoria": "Candidatos"
+       },{
+         "name": "candAgendados", 
+         "url": "/seVan", 
+         "texto": "Foto No valida", 
+         "categoria": "Candidatos"
+     }]
    },
    {
-     "name": "sociosAgendados", 
-     "url": "#/trending", 
-     "texto": "Agendados", 
-     "categoria": "Socios", 
-     "primeroDeSuCategoria": false, 
-     "ultimoDeSuCategoria": false
+     "categoria": "Calendario",
+     "icon": "event",
+     "url": "/search"
    },
    {
-     "name": "sociosOtros", 
-     "url": "#/trending", 
-     "texto": "Los Gallos", 
-     "categoria": "Socios", 
-     "primeroDeSuCategoria": false, 
-     "ultimoDeSuCategoria": true
+     "categoria": "Mensajes",
+     "icon": "announcement",
+     "url": "/dashboard"
+   },
+   {
+     "categoria": "Configuración",
+     "icon": "settings",
+     "url": "/dashboard"
    }
 ]

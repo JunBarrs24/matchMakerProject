@@ -11,5 +11,10 @@
     "sizes": "256x256",
     "type": "image/png"
   }],
-  "start_url": "index.html"
+  "start_url": "index.html",
+  "fragments": [
+    "elements/paginas/list-element-matchmaker.html",
+    "elements/paginas/dashboard-page.html",
+    "src/my-view404.html"
+  ]
 }

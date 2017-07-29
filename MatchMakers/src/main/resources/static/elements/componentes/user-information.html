@@ -1,0 +1,174 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../../bower_components/paper-menu-button/paper-menu-button.html">
+<link rel="import" href="../../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="user-information">
+  <template>
+    <style>
+      .user-content {
+        width: 100%;
+        height: 520px;
+      }
+      
+      .image-user-container {
+        height: 250px;
+      }
+      
+      .image-user-container .slider .slides img {
+        height: 250px;
+        margin: auto;
+        border-radius: 2px;
+      }
+      
+      div.slider.style-scope.user-information {
+        height: 280px !important;
+      }
+      .image-user-basic-information {
+        height: 240px;
+        margin-top: 40px;
+      }
+      
+      .image-user-basic-information p {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .image-user-basic-information span {
+        font-weight: normal;
+      }
+      
+      .images-user-slides {
+        background-color: #eee !important;
+        height: 250px !important;
+      }
+      .user-form-content {
+        width: 100%;
+        height: 400px;
+      }
+      .acciones {
+        width: 100%;
+        height: 50px;
+      }
+      .boton-accion {
+        float: right;
+        margin-left: 10px;
+        margin-top: 10px;
+      }
+      @media only screen and (max-width: 768px) {
+        .photos-container {
+          display: none;
+        }
+      
+        .user-tabs-information {
+          width: 100%;
+          height: 475px;
+          margin-top: 10px;
+          display: inline-block;
+          vertical-align: top;
+        }
+        .hidden-in-celular {
+          display: none !important;
+        }
+      }
+      @media screen and (min-device-width: 769px) {
+        .photos-container {
+          width: 24%;
+          height: 475px;;
+          margin-top: 10px;
+          display: inline-block;
+          vertical-align: top;
+        }
+      
+        .user-tabs-information {
+          width: 75%;
+          height: 475px;
+          margin-top: 10px;
+          display: inline-block;
+          vertical-align: top;
+        }
+        .hidden-in-lap  {
+          display: none !important;
+        }
+      } 
+    </style>
+    <div class="user-content">
+      <div class="photos-container">
+        <div class="image-user-container">
+          <div class="slider">
+            <ul class="slides images-user-slides">
+              <li>
+                <img class="materialboxed" src="../../images/fotos/mujer.jpg"> 
+              </li>
+              <li>
+                <img class="materialboxed" src="../../images/fotos/mujer1.jpg">
+              </li>
+              <li>
+                <img class="materialboxed" src="../../images/fotos/mujer2.jpg">
+              </li>
+              <li>
+                <img class="materialboxed" src="../../images/fotos/mujer3.jpg">
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="image-user-basic-information">
+          <p> Nombre: <span> Juanita Barrera Valdés </span> </p>
+          <p> Edad: <span> 26 años </span> </p> 
+          <p> Profesión: <span> Prostituta de tiempo completo </span> </p> 
+        </div>
+      </div>
+      <div class="user-tabs-information">
+        <div class="row">
+            <ul class="tabs">
+              <li class="tab col"><a class="active" href="#idNumberBasica">Básica</a></li>
+              <li class="tab col"><a href="#idNumberProfesional">Profesional</a></li>
+              <li class="tab col"><a href="#idNumberGustos">Gustos</a></li>
+              <li class="tab col"><a href="#idNumberNoCuestionable">No cuestionable</a></li>
+              <li class="tab col hidden-in-lap"><a href="#idNumberFotos">Fotos</a></li>
+            </ul>
+          <div id="idNumberBasica" class="user-form-content">
+            <p> Aqui va la información básica </p>
+          </div>
+          <div id="idNumberProfesional" class="user-form-content">
+             <p> Aqui va la información profesional </p>
+          </div>
+          <div id="idNumberGustos" class="user-form-content">
+             <p> Aqui van los gustos </p>
+          </div>
+          <div id="idNumberNoCuestionable" class="user-form-content">
+             <p> Aqui va las cosas no cuestionables </p>
+          </div>
+          <div id="idNumberFotos" class="user-form-content">
+              <div class="slider">
+            <ul class="slides images-user-slides">
+              <li>
+                <img class="materialboxed" src="../../images/fotos/mujer.jpg"> 
+              </li>
+              <li>
+                <img class="materialboxed" src="../../images/fotos/mujer1.jpg">
+              </li>
+              <li>
+                <img class="materialboxed" src="../../images/fotos/mujer2.jpg">
+              </li>
+              <li>
+                <img class="materialboxed" src="../../images/fotos/mujer3.jpg">
+              </li>
+            </ul>
+          </div>
+          </div>
+       </div>
+     </div>
+    </div>
+  </template>
+</dom-module>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="user-information.js"></script>
