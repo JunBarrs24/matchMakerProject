@@ -22,7 +22,7 @@
 <link rel="import" href="headerMatch.html">
 <link rel="import" href="drawer-matchmaker.html">
 <link rel="import" href="../paginas/search-results.html">
-<link rel="import" href="../paginas/list-element-matchmaker.html">
+<link rel="import" href="../paginas/lista-clientes.html">
 
 <dom-module id="app-main">
 
@@ -118,12 +118,14 @@
                   attr-for-selected="name"
                   fallback-selection="view404"
                   role="main">
-        <list-element-matchmaker name="clientes"
-                                 tipocliente="{{_typeUser.type}}"></list-element-matchmaker>
+
+        <lista-clientes name="clientes"
+                        tipocliente="{{_typeUser.type}}"></lista-clientes>
         <dashboard-page name="dashboard"></dashboard-page>
         <search-results name="search"></search-results>
         <div name="seVan"><p> Page 4 bish </p></div>
         <my-view404 name="view404"><p>Page 404 to be defined</p></my-view404>
+
       </iron-pages>
       <!--  <paper-spinner active="[[loading]]"></paper-spinner> -->
     </div> <!-- Fin main-content -->

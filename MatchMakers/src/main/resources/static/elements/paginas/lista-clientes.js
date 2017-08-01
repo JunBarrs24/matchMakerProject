@@ -1,5 +1,5 @@
 Polymer({
-	is : 'list-element-matchmaker',
+	is : 'lista-clientes',
 
 	properties : {
 		userslist : {
