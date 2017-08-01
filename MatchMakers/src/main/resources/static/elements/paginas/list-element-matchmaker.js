@@ -20,12 +20,16 @@ Polymer({
 		activated: {
             type: Boolean,
             observer: '_activationChanged'
+        },
+        tipocliente: {
+        	type: String,
+        	observer: '_cambioTipoCliente'
         }
 	},
 	
 	_activationChanged: function(newval, oldval) {
         if (newval) {
-            console.log("just activated");
+            console.log("just activated, el tipo es: " + this.tipocliente);
         }
     },
 	
@@ -55,15 +59,21 @@ Polymer({
     },
     
     onFocus: function(event) {
-        console.log("Esta madre cambio bish!, es");
+        console.log("Esta madre cambio bish!, es clientes");
     },
     
     handleListOfUsersResponse: function (data) {
         console.log('Calling this data bish');
     },
     
+    _cambioTipoCliente: function(newval, oldval) {
+    	console.log('Cambio el tipo del cliente');
+    	console.log(newval);
+    	//Aqui con newval ejecutamos el query para traer a los clientes
+    },
+    
     ready: function() {
-      console.log('Estoy listo, Estoy listo, Estoy pinches listo!');
+
 	  this.filtros = [ {
 			nombre : "Filtro 1",
 			campo : "field 1"

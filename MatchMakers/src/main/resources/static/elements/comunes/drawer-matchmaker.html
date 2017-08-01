@@ -182,21 +182,18 @@
       <ul class="collapsible no-shadow" data-collapsible="expandable">
         <template is="dom-repeat" items="{{menuoptions}}" as="menuItem">
           <li>
-            <a href="{{menuItem.url}}" class="collapsible-header waves-effect btn-flat font-bold hoverable"
+            <a href="#{{menuItem.url}}" class="collapsible-header waves-effect btn-flat font-bold hoverable"
                on-tap="_toggleMenuOption" data-item$="{{menuItem.categoria}}">
               {{menuItem.categoria}}
               <i class="material-icons">{{menuItem.icon}}</i>
               <template is="dom-if" if="{{menuItem.subCategorias}}">
                 <i class="material-icons auxiliar-icon">keyboard_arrow_right</i>
               </template>
-              <template is="dom-if" if="{{menuItem.seleccionado}}">
-                <i class="material-icons">face</i>
-              </template>
              </a>
             <div class="collapsible-body no-padding">
               <ul>
                 <template is="dom-repeat" items="{{menuItem.subCategorias}}" as="subMenuItem">
-                  <a href="{{subMenuItem.url}}" class="waves-effect btn-flat hoverable full-width">
+                  <a href="#{{subMenuItem.url}}" class="waves-effect btn-flat hoverable full-width">
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     {{subMenuItem.texto}}
                   </a>

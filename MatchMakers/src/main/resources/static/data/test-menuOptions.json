@@ -5,11 +5,11 @@
      "url": "#",
      "subCategorias": [{
          "name": "candAgendados", 
-         "url": "/lista1", 
+         "url": "/clientes/clientesPotenciales", 
          "texto": "Potenciales"
        },{
          "name": "candAgendados", 
-         "url": "/lista2", 
+         "url": "/clientes/agendados", 
          "texto": "Foto No valida"
      }]
    },
@@ -19,7 +19,7 @@
      "url": "#",
      "subCategorias": [{
          "name": "candAgendados", 
-         "url": "/lista3", 
+         "url": "/clientes/potenciales", 
          "texto": "Potenciales", 
          "categoria": "Candidatos"
        },{
