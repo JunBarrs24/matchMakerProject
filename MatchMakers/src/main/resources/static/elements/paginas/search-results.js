@@ -1,6 +1,6 @@
 Polymer({
 	is : 'search-results',
-
+ 
 	properties : {
 		querysearch: {
         	type: String,

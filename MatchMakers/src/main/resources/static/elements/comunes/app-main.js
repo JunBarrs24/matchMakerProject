@@ -1,5 +1,5 @@
 Polymer({
-
+ 
 	is : 'app-main',
 
 	properties : {

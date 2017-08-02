@@ -10,7 +10,7 @@ Polymer({
 	activeSearchBar: function (ev) {
 		$('#search-field-wrapper').addClass('search-active');
 	},
-	
+	 
 	deActiveSearchBar: function (ev) {
 		$('#search-field-wrapper').removeClass('search-active');
 	},

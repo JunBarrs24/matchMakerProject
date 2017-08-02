@@ -1,6 +1,6 @@
 Polymer({
 	is : 'lista-clientes',
-
+ 
 	properties : {
 		userslist : {
 			type : Array
