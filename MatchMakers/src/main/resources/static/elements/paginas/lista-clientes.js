@@ -24,7 +24,8 @@ Polymer({
         tipocliente: {
         	type: String,
         	observer: '_cambioTipoCliente'
-        }
+        },
+        tipoClienteLeible: String
 	},
 	
 	_activationChanged: function(newval, oldval) {
@@ -67,8 +68,12 @@ Polymer({
     },
     
     _cambioTipoCliente: function(newval, oldval) {
-    	console.log('Cambio el tipo del cliente');
-    	console.log(newval);
+    	if (newval.startsWith('?tipoCliente=')) {
+          // Quitando el parametro que no necesitamos
+  	      this.tipoClienteLeible = newval.replace('?tipoCliente=','');
+  	      // Agregando los espacios
+    	  console.log('El cliente deseado es: ' + this.tipoClienteLeible);
+    	}
     	//Aqui con newval ejecutamos el query para traer a los clientes
     },
     

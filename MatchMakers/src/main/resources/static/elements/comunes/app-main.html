@@ -23,6 +23,7 @@
 <link rel="import" href="drawer-matchmaker.html">
 <link rel="import" href="../paginas/search-results.html">
 <link rel="import" href="../paginas/lista-clientes.html">
+<link rel="import" href="../paginas/dashboard-page.html">
 
 <dom-module id="app-main">
 
@@ -79,8 +80,8 @@
     -->
     <app-route
         route="{{_subRoute}}"
-        pattern="/:type"
-        data="{{_typeUser}}"></app-route>
+        pattern="/:query"
+        data="{{_querySearch}}"></app-route>
     
    <!-- Request to get the currentUser -->
    <iron-ajax
@@ -120,9 +121,10 @@
                   role="main">
 
         <lista-clientes name="clientes"
-                        tipocliente="{{_typeUser.type}}"></lista-clientes>
+                        tipocliente="{{_querySearch.query}}"></lista-clientes>
         <dashboard-page name="dashboard"></dashboard-page>
-        <search-results name="search"></search-results>
+        <search-results querysearch="{{_querySearch.query}}"
+                        name="search"></search-results>
         <div name="seVan"><p> Page 4 bish </p></div>
         <my-view404 name="view404"><p>Page 404 to be defined</p></my-view404>
 

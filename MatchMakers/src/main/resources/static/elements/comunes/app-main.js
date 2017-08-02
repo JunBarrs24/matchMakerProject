@@ -7,8 +7,8 @@ Polymer({
 		pageSelected : String,
 
 		_loading : Boolean,
-
-		_typeUser : Object,
+		
+		_querySearch: Object,
 
 		_route : Object,
 
@@ -62,7 +62,21 @@ Polymer({
 			if (!this._route.path) {
 				this.set('_route.path', '/' + this.pageSelected);
 			} else {
-				this.pageSelected = this._route.path.substring(1);
+				// Si llega aquí, el path es algo similar a este: /xxxxx/yyyy
+				// yyyy puede ser opcional, así que debemos de manejar el path
+				// para mandar a donde queremos, y ajustar el valor al query param
+				
+				// Obteniendo los diferentes valores del path
+				const seccionesPath = this._route.path.split('/');
+				// verificando (solo por si acaso) que el primer parametro es 0
+				const pagina =
+					seccionesPath[0] == '' ? seccionesPath[1] : seccionesPath[0];
+			    // si hay queryParam, entonces se asigna para mantener el valor
+			    if (seccionesPath.length == 3) {
+			    	this._querySearch = seccionesPath[2];
+			    }
+			    //Asignando el valor de la página a ir, para redireccionar correctamente
+				this.pageSelected = pagina;
 			}
 			this._goToPage(this.pageSelected);
 		});

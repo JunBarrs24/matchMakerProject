@@ -2,24 +2,24 @@
    {
      "categoria": "Candidatos",
      "icon": "face",
-     "url": "#",
+     "url": "",
      "subCategorias": [{
          "name": "candAgendados", 
-         "url": "/clientes/clientesPotenciales", 
+         "url": "/clientes/?tipoCliente=clientesPotenciales", 
          "texto": "Potenciales"
        },{
          "name": "candAgendados", 
-         "url": "/clientes/agendados", 
+         "url": "/clientes/?tipoCliente=agendados", 
          "texto": "Foto No valida"
      }]
    },
    {
      "categoria": "Socios", 
      "icon": "face",
-     "url": "#",
+     "url": "",
      "subCategorias": [{
          "name": "candAgendados", 
-         "url": "/clientes/potenciales", 
+         "url": "/clientes/?tipoCliente=potenciales", 
          "texto": "Potenciales", 
          "categoria": "Candidatos"
        },{
