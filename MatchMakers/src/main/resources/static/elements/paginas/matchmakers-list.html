@@ -1,0 +1,97 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/font-roboto/roboto.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+
+<dom-module id="matchmakers-list">
+  <template>
+    <style>
+    </style>
+    <div class=list-container>
+
+  <iron-ajax
+      auto 
+      id="menuRequest"
+      url="../../data/test-matchmakers-response.json" 
+      handle-as="json"
+      on-response="handleListResponse"></iron-ajax>
+
+  <!-- Filtros -->
+  <ul id="header-list" class="collapsible" data-collapsible="expandable">
+    <li>
+      <div class="collapsible-header">
+       <div class="title-section">
+         <i class="Medium material-icons">perm_identity</i>
+         <span class="title-list"> Lista de {{tipoClienteLeible}}</span>
+       </div>
+       <!-- Div que muestra los filtros seleccionados -->
+       <div class="filter-section">
+           <span class="filtros-text">{{filtrosText}}</span>
+         <template is="dom-repeat" items="{{filtros}}" as="filtro">
+           <div class="chip">
+           <span class="filtro"> {{filtro.nombre}} </span> 
+           <i class="close material-icons"
+              data-filtro="[[filtro]]" 
+              on-tap="clickOnIcon">close</i> 
+          </div>
+         </template> 
+       </div>
+     </div>
+     <!-- Div que muestra las opciones de filtro -->
+ 
+      <div class="collapsible-body">
+        <div class="input-field col s6">
+            <i class="material-icons prefix">search</i>
+            <input id="icon_telephone" type="tel" class="validate">
+            <label for="icon_telephone">Buscar por Nombre</label>
+          </div>
+          <span>Lorem ipsum dolor sit amet.</span>
+          <p class="range-field">
+            <input type="range" id="rangeEdad" min="18" max="80" />
+          </p>
+      </div>
+
+    </li>
+  </ul>
+  <!-- Finaliza Filtros -->
+  
+  <div class="sort-div">
+   <div class="linea-tonta"></div>
+   <span class="texto-ordenar dropdown-button" data-activates='filter-dropdown'>
+     Ordernar Por:
+     <span id="opcion-ordenar"> {{orderMode}} </span>
+   </span>
+   <ul id='filter-dropdown' class='dropdown-content'>
+      <template is="dom-repeat" items="{{orderOptions}}" as="option">
+        <li on-tap="_changeOrderMode" data-option="{{option}}"><a>{{option}}</a></li>
+        <li class="divider"></li>
+      </template>
+  </ul>
+  </div>
+
+  <ul class="collapsible popout" data-collapsible="expandable">
+    <template is="dom-repeat" items="matchmakerslist" as="matchmaker">
+      <li class="hoverable">
+        <div class="collapsible-header hoverable">
+          <div class="avatar-container">
+            <img class="avatar" src={{user.avatar}}>
+          </div>
+          <div class="information-user-container">
+            <span class="name-cliente"> {{matchmaker.nombre}} </span>
+            <span class="edad-cliente"> {{matchmaker.edad}} años </span>
+            <span class="busca-cliente"> {{matchmaker.interes}} </span>
+          </div>
+          <div class="information-user-container button-actions-container">
+             <a class="waves-effect waves-teal btn boton-accion">Acciones</a>
+          </div>
+        </div>
+      </li>
+    </template>
+    
+  </ul>
+</div>
+  </template>
+</dom-module>
+
+<script src="matchmakers-list.js"></script>

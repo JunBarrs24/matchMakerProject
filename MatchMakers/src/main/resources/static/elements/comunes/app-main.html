@@ -1,4 +1,4 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
+		<link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/font-roboto/roboto.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
@@ -24,7 +24,7 @@
 <link rel="import" href="../paginas/search-results.html">
 <link rel="import" href="../paginas/lista-clientes.html">
 <link rel="import" href="../paginas/dashboard-page.html">
-
+<link rel="import" href="../paginas/matchmakers-list.html">
 <dom-module id="app-main">
 
   <template>
@@ -123,6 +123,7 @@
         <lista-clientes name="clientes"
                         tipocliente="{{_querySearch.query}}"></lista-clientes>
         <dashboard-page name="dashboard"></dashboard-page>
+        <matchmakers-list name="matchmakers"></matchmakers-list>
         <search-results querysearch="{{_querySearch.query}}"
                         name="search"></search-results>
         <div name="seVan"><p> Page 4 bish </p></div>

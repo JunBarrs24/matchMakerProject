@@ -1,0 +1,20 @@
+[
+  {
+    "nombre": "Peste Medina",
+    "correo": "barrera.yo@gmail.com",
+    "avatar": "../images/girl.png",
+    "role": "Administrador"
+  },
+  {
+    "nombre": "Juan Barrera",
+    "correo": "barrera.yo@gmail.com",
+    "avatar": "../images/girl.png",
+    "role": "Administrador"
+  },
+  {
+    "nombre": "Juan Barrera",
+    "correo": "barrera.yo@gmail.com",
+    "avatar": "../images/girl.png",
+    "role": "Administrador"
+  }
+]

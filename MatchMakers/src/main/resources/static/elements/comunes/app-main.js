@@ -122,7 +122,7 @@ Polymer({
 	 * 
 	 */
 	ready : function() {
-		this.pageSelected = 'clientes';
+		this.pageSelected = 'matchmakers';
 		this.loading = true;
 		var drawerLayout = document.getElementById('drawerLayout');
 		var toggle = document.getElementById('toggle');
